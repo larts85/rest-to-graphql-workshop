@@ -1,7 +1,6 @@
 {
   "name": "rest-to-graphql-workshop",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "start": "node_modules/.bin/nodemon src/index.js",
     "start-babel": "node_modules/.bin/nodemon -- node_modules/.bin/babel-node src/index.js",
