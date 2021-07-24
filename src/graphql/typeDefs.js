@@ -18,11 +18,11 @@ export const typeDefs = gql`
     id: ID
     name: String
     status: String
-    spicies: String
+    species: String
     type: String
     gender: String
     image: String
-    episode: [String]
+    episodes: [Episode]
   }
 
   type Episode {
@@ -30,7 +30,7 @@ export const typeDefs = gql`
     name: String
     air_date: String
     episode: String
-    characters: [Character]!
+    characters: [Character]
     created: String
   }
 `;
