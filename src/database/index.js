@@ -4,7 +4,6 @@ export const fetchEpisodes = () => {
   return fetch("https://rickandmortyapi.com/api/episode/")
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
       return json;
     })
     .then((json) => json.results);

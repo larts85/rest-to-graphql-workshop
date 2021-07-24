@@ -1,19 +1,24 @@
 import {
   fetchCharacterById,
+  fetchCharacterByUrl,
   fetchCharacters,
   fetchEpisodeById,
+  fetchEpisodeByUrl,
   fetchEpisodes,
 } from "../database";
-import { characters } from "../database/characters";
-import { episodes } from "../database/episodes";
-// Resolvers define the technique for fetching the types in the
 
-// schema.  We'll retrieve books from the "books" array above.
 export const resolvers = {
   Query: {
-    character: (parent, { id }) => fetchCharacterById(id),
+    character: (_, { id }) => fetchCharacterById(id),
     characters: () => fetchCharacters(),
     episodes: () => fetchEpisodes(),
-    episode: (parent, { id }) => fetchEpisodeById(id),
+    episode: (_, { id }) => fetchEpisodeById(id),
+  },
+  Episode: {
+    characters: ({ characters }) => characters.map(fetchCharacterByUrl),
+  },
+  Character: {
+    episodes: ({ episode }, args, context, info) =>
+      episode.map(fetchEpisodeByUrl),
   },
 };
